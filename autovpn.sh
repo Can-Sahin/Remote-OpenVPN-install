@@ -1,6 +1,5 @@
 #!/bin/bash
 
-user='ubuntu'
 
 installerScriptURL="https://raw.githubusercontent.com/Angristan/OpenVPN-install/master/openvpn-install.sh"
 installerScriptFileName="openvpn-install.sh"
@@ -47,24 +46,27 @@ function usage {
   echo "${magenta}"
   echo "*Description*"
   echo ""
-  echo "Specify IP and KEYPAIR to run"
+  echo "Specify IP , KEYPAIR and REMOTE_MACHINE_USER_NAME to run"
   echo ""
-  echo "Example -> ./autovpn -r 'YOUR_IP_ADRESS' -k 'YOUR_PEM_FILE.pem' "
+  echo "Example -> ./autovpn -r 'YOUR_IP_ADRESS' -k 'YOUR_PEM_FILE.pem' -u 'ubuntu'"
   echo ""
   resetColor
 }
 
 
-if ( ! getopts "r:k:" opt); then
+if ( ! getopts "r:k:u:" opt); then
   printErr "Argument Parse Error"
 	usage;
 	exit 1;
 fi
 
-while getopts ":r:k:" opt; do
+user='ubuntu'
+
+while getopts ":r:k:u:" opt; do
   case $opt in
     r) rflag="defined"; instance_ip="$OPTARG" ;;
     k) kflag="defined"; pem_file="$OPTARG" ;;
+    u) uflag="defined"; user="$OPTARG" ;;
     :) echo "Option -$OPTARG requires an argument." >&2 ; usage && exit 0 ;;    
   esac
 done
@@ -83,7 +85,7 @@ downloadInstallerScript() {
   chmod +x "scripts/"$installerScriptFileName
 }
 
-# $./autovpn -r "{_._._._}" -k "{vpnkeypair.pem}"
+# $ bash autovpn -r "{_._._._}" -k "{vpnkeypair.pem}"
 if [ -n "$rflag" ] && [ -n "$kflag" ]
 then
   chmod 400 $pem_file
