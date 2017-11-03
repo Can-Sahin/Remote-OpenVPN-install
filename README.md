@@ -12,7 +12,7 @@ Run the autovpn script in command line (forEx: Terminal in MacOSX) with IPADRESS
 
 Example
 ```shell
-bash autovpn -r 'REMOTE_MACHINE_IP_ADRESS' -k 'YOUR_PEM_FILE.pem' -u 'ubuntu'"
+bash autovpn.sh -r 'REMOTE_MACHINE_IP_ADRESS' -k 'YOUR_PEM_FILE.pem' -u 'ubuntu'"
 ```
 Follow the [OpenVPN-install] commands to complete the installation
 

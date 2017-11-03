@@ -85,7 +85,7 @@ downloadInstallerScript() {
   chmod +x "scripts/"$installerScriptFileName
 }
 
-# $ bash autovpn -r "{_._._._}" -k "{vpnkeypair.pem}"
+# $ bash autovpn.sh -r "{_._._._}" -k "{vpnkeypair.pem}"
 if [ -n "$rflag" ] && [ -n "$kflag" ]
 then
   chmod 400 $pem_file
@@ -113,5 +113,4 @@ else
   usage
   exit 0
 fi 
-
 
