@@ -5,7 +5,9 @@ It runs the necessary commands such as `ssh and scp` to run the [OpenVPN-install
 
 # Usage
 Download the repository (autovpn.sh and scripts folder)
+
 Put your SSH Key(keypair obtained from remote machine providers) in the same directory with autovpn.sh file
+
 Run the autovpn script with IPADRESS, PRIVATE_KEY, REMOTE_MACHINE_USER_NAME
 ```shell
 bash autovpn -r 'YOUR_IP_ADRESS' -k 'YOUR_PEM_FILE.pem' -u 'ubuntu'"
